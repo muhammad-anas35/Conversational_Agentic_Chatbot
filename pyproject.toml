@@ -1,0 +1,20 @@
+[project]
+name = "agent-sdk"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+authors = [
+    { name = "M Anas", email = "m401anas@gmail.com" }
+]
+requires-python = ">=3.11"
+dependencies = [
+    "chainlit>=2.4.400",
+    "openai-agents>=0.0.7",
+]
+
+[project.scripts]
+agent-sdk = "agent_sdk:main"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
