@@ -1,4 +1,5 @@
 import chainlit as cl 
+import asyncio
 import os
 from agents import Agent, RunConfig, Runner, AsyncOpenAI, OpenAIChatCompletionsModel 
 from dotenv import load_dotenv, find_dotenv
@@ -42,6 +43,23 @@ agent1 = Agent(
 # )
 
 # print(result.final_output)
+
+#  With Stream
+async def main():
+    agent=Agent(
+        name="Senior Assitant" ,
+        instructions="You are a helpful assistant."
+    )
+
+    result= Runner.run_streamed(
+        agent1,
+        input="Tell me 5 joke",
+         run_config= run_config,
+    )
+    async for event in result.stream_events():
+        if event.type == "raw_response_event" and isinstance(event.data, ResponseTextDeltaEvent):
+            print(event.data.delta,end="",flush=True)
+asyncio.run(main())
 
 @cl.on_chat_start
 async def handel_start_chat():
