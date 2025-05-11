@@ -10,16 +10,16 @@ gemini_api_key = os.getenv("GEMINI_API_KEY")
 
 load_dotenv(find_dotenv())
 
-# Step 1 : Provider
+# Step 1 : Set Provider
 provider = AsyncOpenAI(
     api_key=gemini_api_key,
     base_url="https://generativelanguage.googleapis.com/v1beta/openai/"
 )
 
-# Step 2: model 
+# Step 2: Set model 
 model = OpenAIChatCompletionsModel(
-    model="gemini-2.0-flash",
-    openai_client=provider,
+        model="gemini-2.0-flash",
+        openai_client=provider,
 
 )
 
@@ -30,17 +30,22 @@ run_config = RunConfig(
     tracing_disabled=True,
 )
 
+# agent1 = Agent(
+#         instructions="You are a helpful assistant.", 
+#         name="Senior Assitant" 
+#     )
+
 # Step 4:Making Agent
 agent1 = Agent(
-    instructions="You are a helpful assistant. Your name is bib .You are developed by devloper whose name is MUhammad Anas . He is Agentic first and cloud first developer. ", 
-    name="Senior Assitant" 
+    instructions="You are a helpful health assistant. Your name is bib .You are developed by devloper whose name is MUhammad Anas . He is Agentic first and cloud first developer. ", 
+    name="Senior Health Assitant" 
 )
 
 # Step 5: Run Agent
 # result= Runner.run_sync(
-# agent1,
-#     input="Who is Founder of PIA?",
-#     run_config= run_config,
+#     agent1,
+#         input="Who is Founder of PIA?",
+#         run_config= run_config,
 # )
 
 # print(result.final_output)
@@ -50,7 +55,7 @@ agent1 = Agent(
 @cl.on_chat_start
 async def handel_start_chat():
     cl.user_session.set("history",[])
-    await cl.Message(content="Hello, I am a helpful assistant. How can I help you today?").send()
+    await cl.Message(content="Hello, I am a helpful health assistant. How can I help you today?").send()
 
 #  With Stream
 
@@ -78,6 +83,7 @@ async def handel_message(message: cl.Message):
 
     history.append({"role":"assistant","content":result.final_output})
     cl.user_session.set("history",history)
+
     # await cl.Message(content=result.final_output).send()
 
 # async def main():
