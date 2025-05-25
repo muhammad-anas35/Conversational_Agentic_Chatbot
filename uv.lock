@@ -13,12 +13,16 @@ source = { editable = "." }
 dependencies = [
     { name = "chainlit" },
     { name = "openai-agents" },
+    { name = "python-dotenv" },
+    { name = "tavily-python" },
 ]
 
 [package.metadata]
 requires-dist = [
     { name = "chainlit", specifier = ">=2.4.400" },
     { name = "openai-agents", specifier = ">=0.0.7" },
+    { name = "python-dotenv", specifier = ">=1.1.0" },
+    { name = "tavily-python", specifier = ">=0.7.2" },
 ]
 
 [[package]]
@@ -1942,6 +1946,20 @@ name = "syncer"
 version = "2.0.3"
 source = { registry = "https://pypi.org/simple" }
 sdist = { url = "https://files.pythonhosted.org/packages/8d/dd/d4dd75843692690d81f0a4b929212a1614b25d4896aa7c72f4c3546c7e3d/syncer-2.0.3.tar.gz", hash = "sha256:4340eb54b54368724a78c5c0763824470201804fe9180129daf3635cb500550f", size = 11512 }
+
+[[package]]
+name = "tavily-python"
+version = "0.7.2"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "httpx" },
+    { name = "requests" },
+    { name = "tiktoken" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/fe/27/73b4911c718453c8ed6d8c3a0e40c9114fb34e3c80b1b6573e969345fb0e/tavily_python-0.7.2.tar.gz", hash = "sha256:34f713002887df2b5e6b8d7db7bc64ae107395bdb5f53611e80a89dac9cbdf19", size = 16481 }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/47/85/57b6f6a53a5600cc11d6713b33bac16bf8d756bf30ddba71f7a64681755d/tavily_python-0.7.2-py3-none-any.whl", hash = "sha256:0d7cc8b1a2f95ac10cf722094c3b5807aade67cc7750f7ca605edef7455d4c62", size = 14917 },
+]
 
 [[package]]
 name = "tenacity"

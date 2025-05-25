@@ -1,15 +1,17 @@
 [project]
 name = "agent-sdk"
 version = "0.1.0"
-description = "Add your description here"
+description = "This is Conversational Agentic chatbot with capability like Live_search , weather_detail etc"
 readme = "README.md"
 authors = [
-    { name = "M Anas", email = "m401anas@gmail.com" }
+    { name = "M", email = "" }
 ]
 requires-python = ">=3.11"
 dependencies = [
     "chainlit>=2.4.400",
     "openai-agents>=0.0.7",
+    "python-dotenv>=1.1.0",
+    "tavily-python>=0.7.2",
 ]
 
 [project.scripts]
