@@ -20,7 +20,7 @@ dependencies = [
 [package.metadata]
 requires-dist = [
     { name = "chainlit", specifier = ">=2.4.400" },
-    { name = "openai-agents", specifier = ">=0.0.7" },
+    { name = "openai-agents", extras = ["litellm"], specifier = ">=0.0.7" },
     { name = "python-dotenv", specifier = ">=1.1.0" },
     { name = "tavily-python", specifier = ">=0.7.2" },
 ]

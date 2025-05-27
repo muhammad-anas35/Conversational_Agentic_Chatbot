@@ -1,14 +1,49 @@
-# Welcome to Chainlit! 🚀🤖
+# This Is conversational Agent With Chainlit Integration 
 
-Hi there, Developer! 👋 We're excited to have you on board. Chainlit is a powerful tool designed to help you prototype, debug and share applications built on top of LLMs.
+# Pourpose 
+- To Understand and practice the code .
 
-## Useful Links 🔗
+# Step to Make
+## Setup
+1. Import all Function
+2. Get Key from .env file 
+## Agents Making
+1. Set Provider
+```Python
+    provider = AsyncOpenAI(
+    api_key=gemini_api_key,
+    base_url="https://generativelanguage.googleapis.com/v1beta/openai/"
+)
+```
+2. Set Model 
+```Python
+    model = OpenAIChatCompletionsModel(
+        model="gemini-2.0-flash",
+        openai_client=provider,
 
-- **Documentation:** Get started with our comprehensive [Chainlit Documentation](https://docs.chainlit.io) 📚
-- **Discord Community:** Join our friendly [Chainlit Discord](https://discord.gg/k73SQ3FyUh) to ask questions, share your projects, and connect with other developers! 💬
+    )
+```
+3. Configration
+- Configration also have 3 type .
+- Run Level 
+- Direct to Agent
+- Global  
+4. Making Agent 
+```Python
+    agent1 = Agent(
+        instructions="You are a helpful assistant.", 
+        name="Senior Assitant" 
+    )
+```
+5. Run Agents
+```Python
+    result= Runner.run_sync(
+    agent1,
+        input="Who is Founder of PIA?",
+        run_config= run_config,
+    )
+```
 
-We can't wait to see what you create with Chainlit! Happy coding! 💻😊
-
-## Welcome screen
-
-To modify the welcome screen, edit the `chainlit.md` file at the root of your project. If you do not want a welcome screen, just leave this file empty.
+## Last. **Integrate With chainlit**
+- Follow ME on Fiverr: [Fiverr](https://www.fiverr.com/s/991k68A)
+- Follow ME on Linkdin: [Linkedin](https://www.linkedin.com/in/muhammad-anas35)
