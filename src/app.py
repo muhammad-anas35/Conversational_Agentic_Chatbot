@@ -1,34 +1,36 @@
-import os
-import chainlit as cl # type: ignore
-from agents.tool import function_tool # type: ignore
+from agents import Agent,RunConfig,Runner,AsyncOpenAI,OpenAIChatCompletionsModel,function_tool,set_tracing_disabled # type: ignore 
 from openai.types.responses import ResponseTextDeltaEvent # type: ignore 
-from agents import Agent, RunConfig, Runner, AsyncOpenAI, OpenAIChatCompletionsModel # type: ignore 
+from agents.extensions.models.litellm_model import LitellmModel # type: ignore
 from tavily import TavilyClient # type: ignore
+import chainlit as cl # type: ignore
+import os
 
 from dotenv import load_dotenv, find_dotenv # type: ignore
+set_tracing_disabled(disabled=True)
 
-# Fetching Api key from .env file
 gemini_api_key = os.getenv("GEMINI_API_KEY")
 search_key =  os.getenv("TAVILY_API_KEY")
 
+# Fetching Api key from .env file
 load_dotenv(find_dotenv())
 
 # Tool Making
 @function_tool("search_online") # type: ignore
 def search_online(query: str) -> str:
     """Search the web for answering the given question"""
+    print("Searcing from the web...")
     search_client = TavilyClient(api_key= search_key) # type: ignore
     result = search_client.search(query)
     return result
 
-
-# Step 1 : Set Provider
+# # Step 1 : Set Provider
 provider = AsyncOpenAI(
     api_key=gemini_api_key,
     base_url="https://generativelanguage.googleapis.com/v1beta/openai/"
 )
 
-# Step 2: Set model 
+# # Step 2: Set model 
+
 model = OpenAIChatCompletionsModel(
         model="gemini-2.0-flash",
         openai_client=provider,
@@ -39,7 +41,6 @@ model = OpenAIChatCompletionsModel(
 run_config = RunConfig(
     model=model,
     model_provider=provider, # type: ignore
-    tracing_disabled=True,
 )
 # Step 4:Making Agent
 agent1 = Agent(
