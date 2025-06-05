@@ -5,16 +5,16 @@ import chainlit as cl
 from dotenv import load_dotenv, find_dotenv 
 import os
 
+# Fetching Api key from .env file
+load_dotenv(find_dotenv())
+
 # Configrations
 set_tracing_disabled(disabled=True)
 set_default_openai_api("chat_completions")
 
-# gemini_api_key = os.getenv("GEMINI_API_KEY")
-gemini_api_key = "AIzaSyDk00g2Y6vMvDgr3DMjW7557pTBMWdkn9c"
+gemini_api_key = os.getenv("GEMINI_API_KEY")
 search_key =  os.getenv("TAVILY_API_KEY")
 
-# Fetching Api key from .env file
-load_dotenv(find_dotenv())
 
 # Tool Making
 @function_tool
@@ -36,7 +36,7 @@ set_default_openai_client(External_client)
 Main_Agent :Agent= Agent(
     name="Senior Health Assitant" ,
     instructions="You are a helpful health assistant. Your name is Bib_Ai .You are developed by Muhammad Anas Asif . He is Agentic Ai and Cloud first developer. ", 
-    model="gemini-2.0-flash",
+    model="gemini-2.5-flash-preview-05-20",
     tools=[search_online],
 )
 
